@@ -1,4 +1,4 @@
-package com.example.myapp3;
+package webdev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
