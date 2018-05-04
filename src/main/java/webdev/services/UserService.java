@@ -23,6 +23,15 @@ public class UserService {
 		return repository.findAll();
 	}
 
+	@GetMapping("/api/user/{userId}")
+	public User findUserById(@PathVariable("userId") int id) {
+		Optional<User> user = repository.findById(id);
+		if(user.isPresent()) {
+			return user.get();
+		}
+		return null;
+	}
+
 	@PostMapping("/api/user")
 	public User createUser(@RequestBody User user) {
 		return repository.save(user);
