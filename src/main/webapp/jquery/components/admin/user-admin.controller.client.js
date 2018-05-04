@@ -3,6 +3,7 @@
 	
 	var $usernameFld, $passwordFld;
 	var $createBtn;
+	var userService = new UserService();
 	
 	function init() {
 		$usernameFld = $("#usernameFld");
@@ -16,6 +17,6 @@
 		var username = $usernameFld.val();
 		var password = $usernameFld.val();
 		var user = new User(username, password);
-		console.log(user);
+		userService.createUser(user);
 	}
 })();
