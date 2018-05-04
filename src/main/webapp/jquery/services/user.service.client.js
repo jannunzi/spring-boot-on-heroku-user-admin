@@ -2,8 +2,15 @@ function UserService() {
 	this.url = '/api/user';
 	this.createUser = createUser;
 	this.findAllUsers = findAllUsers;
+	this.deleteUser = deleteUser;
 	
 	var self = this;
+
+	function deleteUser(userId) {
+		return fetch(self.url + '/' + userId, {
+			method: 'DELETE'
+		});
+	}
 	
 	function findAllUsers() {
 		return fetch(self.url)

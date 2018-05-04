@@ -32,8 +32,18 @@
 			$userRow.removeClass("userRecordTemplate");
 			$userRow.find(".usernameTemplate").html(user.username);
 			$userRow.find(".passwordTemplate").html(user.password);
+			$userRow.find(".deleteBtn")
+				.attr("id", user.id)
+				.click(deleteUser);
 			$tbody.append($userRow);
 		});
+	}
+
+	function deleteUser(event) {
+		var deleteBtn = event.currentTarget;
+		var $deleteBtn = $(deleteBtn);
+		var userId = $deleteBtn.attr("id");
+		userService.deleteUser(userId);
 	}
 
 	function createUser() {
