@@ -8,5 +8,11 @@
 		$usernameFld = $("#usernameFld");
 		$passwordFld = $("#passwordFld");
 		$createBtn = $("#createBtn");
+
+		$createBtn.click(createUser);
+	}
+
+	function createUser() {
+
 	}
 })();
