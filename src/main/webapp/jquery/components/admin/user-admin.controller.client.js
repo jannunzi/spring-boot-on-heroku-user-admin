@@ -11,6 +11,16 @@
 		$createBtn = $("#createBtn");
 
 		$createBtn.click(createUser);
+
+		findAllUsers();
+	}
+
+	function findAllUsers() {
+		userService
+			.findAllUsers()
+			.then(function(users) {
+				console.log(users);
+			});
 	}
 
 	function createUser() {
