@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import webdev.model.*;
@@ -18,7 +19,7 @@ public class UserService {
 	UserRepository repository;
 	
 	@GetMapping("/api/user")
-	public List<User> findAllUsers() {
+	public Iterable<User> findAllUsers() {
 		return repository.findAll();
 	}
 
@@ -30,5 +31,15 @@ public class UserService {
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int userId) {
 		repository.deleteById(userId);
+	}
+
+	@PutMapping("/api/user/{userId}")
+	public void updateUser(@PathVariable("userId") int userId, @RequestBody User newUser) {
+		Optional<User> optional = repository.findById(userId);
+		if(optional.isPresent()) {
+			User user = optional.get();
+			user.setUsername(newUser.getUsername());
+			repository.save(user);
+		}
 	}
 }
