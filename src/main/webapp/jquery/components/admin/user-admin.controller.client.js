@@ -50,7 +50,7 @@
 
 	function createUser() {
 		var username = $usernameFld.val();
-		var password = $usernameFld.val();
+		var password = $passwordFld.val();
 		var user = new User(username, password);
 		userService
 			.createUser(user)
