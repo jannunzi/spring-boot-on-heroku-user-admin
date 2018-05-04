@@ -43,13 +43,17 @@
 		var deleteBtn = event.currentTarget;
 		var $deleteBtn = $(deleteBtn);
 		var userId = $deleteBtn.attr("id");
-		userService.deleteUser(userId);
+		userService
+			.deleteUser(userId)
+			.then(findAllUsers);
 	}
 
 	function createUser() {
 		var username = $usernameFld.val();
 		var password = $usernameFld.val();
 		var user = new User(username, password);
-		userService.createUser(user);
+		userService
+			.createUser(user)
+			.then(findAllUsers);
 	}
 })();
